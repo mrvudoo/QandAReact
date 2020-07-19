@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { QuestionData } from './QuestionsData';
@@ -24,22 +24,28 @@ export const Question: FC<Props> = ({ data, showContent = true }) => (
       {data.title}
     </div>
     {showContent && (
-      <div css={css`
-      padding-bottom: 10px;
-      font-size: 15px;
-      color: ${gray2};
-    `}>
-      {data.content.length > 50 ? `${data.content.substring(9,50)}` : `${data.content}`}
-    </div>
-    )}    
-    <div
+      <div
         css={css`
-            font-size: 12px;
-            font-style: italic;
-            color: ${gray3};
+          padding-bottom: 10px;
+          font-size: 15px;
+          color: ${gray2};
         `}
+      >
+        {data.content.length > 50
+          ? `${data.content.substring(0, 50)}`
+          : `${data.content}`}
+      </div>
+    )}
+    <div
+      css={css`
+        font-size: 12px;
+        font-style: italic;
+        color: ${gray3};
+      `}
     >
-        {`Asked by ${data.username} on ${data.created.toLocaleDateString()} ${data.created.toLocaleTimeString()}`}
+      {`Asked by ${
+        data.username
+      } on ${data.created.toLocaleDateString()} ${data.created.toLocaleTimeString()}`}
     </div>
   </div>
 );

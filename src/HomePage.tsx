@@ -12,11 +12,12 @@ export const HomePage = () => {
   const [questionsLoading, setQuestionsLoading] = useState(true);
 
   useEffect(() => {
-    const doGetUnanweredQuestions = async () => {
-      console.log('getting unanswered questions...');
+    const doGetUnansweredQuestions = async () => {
       const unansweredQuestions = await getUnansweredQuestions();
+      setQuestions(unansweredQuestions);
+      setQuestionsLoading(false);
     };
-    doGetUnanweredQuestions();
+    doGetUnansweredQuestions();
   }, []);
   
   const handleAskQuestionClick = () => {
